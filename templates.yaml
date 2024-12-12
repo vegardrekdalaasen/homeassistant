@@ -1,0 +1,31 @@
+- sensor:
+    ##### Strompris ##################################
+    - name: "NordPool Strompris"
+      unique_id: 7619fa42-e070-4459-b6de-c16ca9472248
+      icon: mdi:cash
+      unit_of_measurement: "NOK"
+      state: >
+        {{ states('sensor.nordpool_kwh_no2_nok_3_10_025') | float(0) + states('input_number.nordpool_ekstra_kost') | float(0) }}
+      attributes:
+        times: >
+          {% set ns = namespace(times=[]) -%}
+          {%- set today = state_attr('sensor.nordpool_kwh_no2_nok_3_10_025','raw_today') -%}
+          {%- for hours in today -%}
+            {%- set ns.times = ns.times + [as_local((hours.start)).strftime("%Y-%m-%d %H:%M:%S")] -%} 
+          {%- endfor -%}
+          {%- set tomorrow = state_attr('sensor.nordpool_kwh_no2_nok_3_10_025','raw_tomorrow') -%}
+          {%- for hours in tomorrow -%}
+            {%- set ns.times = ns.times + [as_local((hours.start)).strftime("%Y-%m-%d %H:%M:%S")] -%} 
+          {%- endfor -%}
+          {{ ns.times }}
+        prices: >
+          {% set ns = namespace(prices=[]) -%}
+          {%- set today = state_attr('sensor.nordpool_kwh_no2_nok_3_10_025','raw_today') -%}
+          {%- for hours in today -%}
+            {%- set ns.prices = ns.prices + [hours.value + states('input_number.nordpool_ekstra_kost') | float(0)] -%} 
+          {%- endfor -%}
+          {%- set tomorrow = state_attr('sensor.nordpool_kwh_no2_nok_3_10_025','raw_tomorrow') -%}
+          {%- for hours in tomorrow -%}
+            {%- set ns.prices = ns.prices + [hours.value + states('input_number.nordpool_ekstra_kost') | float(0)] -%} 
+          {%- endfor -%}
+          {{ ns.prices }}
