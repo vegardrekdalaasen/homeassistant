@@ -1,0 +1,65 @@
+homeassistant: true
+devices:
+  '0x54ef44100050f047':
+    friendly_name: Extender_splug
+    homeassistant:
+      name: Extender_splug
+    optimistic: true
+  '0x00158d0008f2ff81':
+    friendly_name: Tempfukt_badoppe
+    homeassistant:
+      name: Tempfukt_badoppe
+    optimistic: true
+  '0x00158d0009cbf923':
+    friendly_name: Tempfukt_badnede
+  '0x00158d0009cbf87c':
+    friendly_name: Tempfukt_bod
+  '0x00158d000943b416':
+    friendly_name: Tempfukt_hovedsoverom
+  '0x00158d0009cbfa07':
+    friendly_name: Tempfukt_stue
+  '0x00158d0007d3e0de':
+    friendly_name: Tempfukt_soveromnede
+  '0xdc8e95fffe5e1686':
+    friendly_name: Range_extender
+  '0x00158d000945fbe6':
+    friendly_name: Temp_soveromoppe
+  '0x00158d000945f01f':
+    friendly_name: Temp_garasje
+  '0x54ef4410009089c1':
+    friendly_name: Vannsens_bad
+  '0x54ef441000491f0a':
+    friendly_name: Lyssensor_bod
+  '0xf4b3b1fffe48493d':
+    friendly_name: Knapprobot_gang
+  '0x001788010dce22a4':
+    friendly_name: Taklampe_stue1
+groups: {}
+mqtt:
+  server: mqtt://core-mosquitto:1883
+  user: addons
+  password: verysecretpassword
+serial:
+  port: >-
+    /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2598466-if00
+  adapter: deconz
+frontend:
+  port: 8099
+advanced:
+  log_syslog:
+    app_name: Zigbee2MQTT
+    eol: /n
+    host: localhost
+    localhost: localhost
+    path: /dev/log
+    pid: process.pid
+    port: 514
+    protocol: udp4
+    type: '5424'
+  last_seen: ISO_8601
+  log_level: info
+availability:
+  active:
+    timeout: 10
+  passive:
+    timeout: 1500
