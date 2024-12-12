@@ -1,0 +1,37 @@
+square: false
+type: grid
+cards:
+  - type: custom:clock-weather-card
+    entity: weather.forecast_hjem
+    title: null
+    sun_entity: sun.sun
+    temperature_sensor: sensor.outdoor_temp
+    humidity_sensor: sensor.outdoor_humidity
+    weather_icon_type: line
+    animated_icon: true
+    forecast_rows: 5
+    locale: en-GB
+    time_pattern: HH:mm
+    time_format: 24
+    date_pattern: ccc, d.MM.yy
+    hide_today_section: false
+    hide_forecast_section: false
+    show_humidity: false
+    hide_clock: false
+    hide_date: false
+    hourly_forecast: false
+    use_browser_time: false
+    time_zone: null
+    show_decimal: false
+    apparent_sensor: sensor.real_feel_temperature
+    aqi_sensor: sensor.air_quality_index
+  - type: custom:frigate-card
+    cameras:
+      - camera_entity: camera.isak
+      - camera_entity: camera.garasje_2
+      - camera_entity: camera.side
+    menu:
+      buttons:
+        substreams:
+          enabled: false
+columns: 2
