@@ -1,0 +1,80 @@
+square: false
+type: grid
+cards:
+  - type: custom:bar-card
+    entities:
+      - entity: sensor.tempfukt_badoppe_temperature
+        name: Bad oppe
+      - entity: sensor.tempfukt_badnede_temperature
+        name: Bad nede
+      - entity: sensor.0x00158d0009cbfa07_temperature
+        name: Stue
+      - entity: sensor.tempfukt_bod_temperature
+        name: Bod
+    min: "17"
+    target: "22"
+    unit_of_measurement: " "
+    decimal: 1
+    direction: up
+    stack: horizontal
+    positions:
+      icon: "off"
+    show_icon: false
+    height: 50px
+    title: null
+    severity:
+      - from: "0"
+        to: "21"
+        color: blue
+      - from: "21"
+        to: "24"
+        color: seagreen
+      - from: "24"
+        to: "26"
+        color: peru
+      - from: "26"
+        to: "30"
+        color: tomato
+    max: "28"
+  - type: custom:bar-card
+    entities:
+      - entity: sensor.device1_temperature
+        name: Soverom
+      - entity: sensor.0x00158d0007d3e0de_temperature
+        name: Soverom nede
+      - entity: sensor.temp_soveromoppe_temperature
+        name: Soverom Isak
+      - entity: sensor.temp_garasje_temperature
+        name: Garasje
+    min: "17"
+    target: "22"
+    unit_of_measurement: " "
+    decimal: 1
+    direction: up
+    stack: horizontal
+    positions:
+      icon: "off"
+    show_icon: false
+    height: 50px
+    title: null
+    severity:
+      - from: "0"
+        to: "21"
+        color: blue
+      - from: "21"
+        to: "24"
+        color: seagreen
+      - from: "24"
+        to: "26"
+        color: peru
+      - from: "26"
+        to: "30"
+        color: tomato
+    max: "28"
+  - type: entities
+    entities:
+      - entity: vacuum.roborock_s5_max
+        name: Robotstøvsuger
+        icon: mdi:robot-vacuum-variant
+      - entity: lawn_mower.robogoat
+        name: Robotgeit
